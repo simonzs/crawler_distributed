@@ -3,6 +3,7 @@ package client
 import (
 	"log"
 
+	"github.com/simonzs/crawler_distributed/config"
 	"github.com/simonzs/crawler_distributed/rpcsupport"
 	"github.com/simonzs/crawler_go/engine"
 )
@@ -26,7 +27,7 @@ func ItemSaver(host string) (chan engine.Item, error) {
 
 			// Call RPC to save item
 			result := ""
-			err := client.Call("ItemSaverService.Save",
+			err := client.Call(config.ItemSaverRPC,
 				item, &result)
 			if err != nil || result != "ok" {
 				log.Print("Item Save: error "+

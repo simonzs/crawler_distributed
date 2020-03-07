@@ -1,15 +1,19 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/olivere/elastic"
+	"github.com/simonzs/crawler_distributed/config"
 	"github.com/simonzs/crawler_distributed/persist"
 	"github.com/simonzs/crawler_distributed/rpcsupport"
 )
 
 func main() {
-	log.Fatal(serverRPC(":1234", "dating_profile"))
+	log.Fatal(serverRPC(
+		fmt.Sprintf(":%d", config.ItemSaverPort),
+		config.ElasticIndex))
 }
 
 // ServerRPC ...
