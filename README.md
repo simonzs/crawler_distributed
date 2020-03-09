@@ -33,3 +33,8 @@ type ParserResult struct {
 - go run persist/server/itemserver.go
 ### 执行engine
 - go run main.go
+
+# 命令运行
+- go run main.go --itemsaver_host=":1234" --worker_host="9003"
+- go run worker/server/worker.go  --port=9001
+- go run persist/server/itemserver.go --port=1234
